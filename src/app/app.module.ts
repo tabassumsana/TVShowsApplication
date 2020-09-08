@@ -3,7 +3,6 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +26,6 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LayoutModule
   ],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],

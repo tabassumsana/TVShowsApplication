@@ -1,6 +1,5 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Observable, empty, of } from 'rxjs';
 
 import { ShowsService } from './shows.service';
 
@@ -20,8 +19,8 @@ describe('ShowsService', () => {
   it('should be created', () => {
     expect(showService).toBeTruthy();
   });
-  it(`should fetch all shows as an Observable`, async(inject([HttpTestingController, ShowsService],
-    (httpClient: HttpTestingController, showService: ShowsService) => {
+  it(`should fetch all shows as an Observable`, async(inject([ShowsService],
+    (showService: ShowsService) => {
         showService.getAllShows().subscribe((shows: any) => {
           expect(shows.length).toBe(1);
         });
@@ -31,8 +30,8 @@ describe('ShowsService', () => {
         httpMock.verify();
     })
   ));
-  it(`should fetch shows by id as an Observable`, async(inject([HttpTestingController, ShowsService],
-      (httpClient: HttpTestingController, showService: ShowsService) => {
+  it(`should fetch shows by id as an Observable`, async(inject([ShowsService],
+      (showService: ShowsService) => {
           showService.getShowById(1)
           .subscribe((show: any) => {
             expect(show.length).toBe(1);
@@ -43,8 +42,8 @@ describe('ShowsService', () => {
         httpMock.verify();
       })
   ));
-  it(`should fetch all seasons of a show as an Observable`, async(inject([HttpTestingController, ShowsService],
-    (httpClient: HttpTestingController, showService: ShowsService) => {
+  it(`should fetch all seasons of a show as an Observable`, async(inject([ShowsService],
+    (showService: ShowsService) => {
         showService.getShowSeasonList(1).subscribe((shows: any) => {
           expect(shows.length).toBe(1);
         });

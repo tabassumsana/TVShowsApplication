@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
-import {Observable, of} from 'rxjs/';
+import { of } from 'rxjs/';
 import { By } from '@angular/platform-browser';
 
 import { ShowDetailsComponent } from './show-details.component';
@@ -105,14 +105,14 @@ describe('ShowDetailsComponent', () => {
     expect(compiled.querySelector('.detail-container .show-name').textContent).toContain('Arrow');
   });
   it('should have goBack method and should call location.back', () => {
-   spyOn(component.location, 'back');  
-   const ele = fixture.debugElement.queryAll(By.css('.back-icon'));
-   expect(ele.length).toBe(1);
-   const backBtn: HTMLElement = ele[0].nativeElement;
-   expect(backBtn).toHaveClass('back-icon');
-   backBtn.click();
-   expect(component.goBack).toBeDefined();
-   expect(component.location.back).toHaveBeenCalled();
+      spyOn(component.location, 'back');  
+      const ele = fixture.debugElement.queryAll(By.css('.back-icon'));
+      expect(ele.length).toBe(1);
+      const backBtn: HTMLElement = ele[0].nativeElement;
+      expect(backBtn).toHaveClass('back-icon');
+      backBtn.click();
+      expect(component.goBack).toBeDefined();
+      expect(component.location.back).toHaveBeenCalled();
    });
 });
 

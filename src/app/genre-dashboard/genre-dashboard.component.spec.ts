@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-// import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-// import {Location} from '@angular/common';
 
 import { GenreDashboardComponent } from './genre-dashboard.component';
 import { ShowsService} from '../service/shows.service';
