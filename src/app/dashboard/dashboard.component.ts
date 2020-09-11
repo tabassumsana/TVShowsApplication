@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
           genres: obj.genres,
           url: obj.url
         };
-      }).sort((a, b) => b.rating > a.rating ? 1 : -1);
+      }).sort((a, b) => b.rating - a.rating);
       this.createDataBasedOnGenre();
     });
   }
