@@ -70,10 +70,6 @@
         flex-flow: column wrap;
         position: relative;
         width: 35%;
-        // -webkit-transition: all 0.7s ease 0s;
-        // -moz-transition: all 0.7s ease 0s;
-        // -o-transition: all 0.7s ease 0s;
-        // transition: all 0.7s ease 0s;
     }
     .search-container {
         width: 100%;
@@ -97,7 +93,6 @@
     .filter-select-empty{
         width: 100%;
         height: auto;
-        // background: #46494b;
         color: #b4d08b;
         padding: 20px 0 20px 20px;
 
@@ -138,31 +133,9 @@
         }
         .filter-select{
             left: 0;
-            // height: 50px;
-            // img{
-                // height: 50px;
-                // width: 50%;
-            // }
         }
         .filter-select-empty{
             text-align: center;
         }
-        // .artist-name {
-            // font-size: 9px;
-            // padding: 7px 0 5px 5px;
-            // .result-genre,
-            // .result-language{
-            //     display: none;
-            // }
-            // &> *:last-child,
-            // &:nth-child(2)
-            //  {
-            //     display: none;
-            //   }
-            // display: none;
-        // }
-//         .artist-name:nth-last-of-type(2){
-// color:red;
-//         }
     }
 }

@@ -1,5 +1,6 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { ShowsService } from './shows.service';
 
@@ -28,6 +29,17 @@ describe('ShowsService', () => {
     req.flush(showList);
     httpMock.verify();
   });
+  it('fetch all shows api throws 404 error', () => {
+    showService.getAllShows().subscribe(
+      () => fail('Should have failed with 404 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(404);
+        expect(error.error).toContain('404 error');
+      }
+    );
+    const req = httpMock.expectOne('http://api.tvmaze.com/shows');
+    req.flush('404 error', { status: 404, statusText: 'Not Found' });
+  });
   it(`should fetch shows by id as an Observable`, () => {
     showService.getShowById(1)
     .subscribe((show: any) => {
@@ -38,6 +50,17 @@ describe('ShowsService', () => {
     req.flush(showList);
     httpMock.verify();
   });
+  it('fetch show by id api throws 404 error', () => {
+    showService.getShowById(2).subscribe(
+      () => fail('Should have failed with 404 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(404);
+        expect(error.error).toContain('404 error');
+      }
+    );
+    const req = httpMock.expectOne('http://api.tvmaze.com/shows/2');
+    req.flush('404 error', { status: 404, statusText: 'Not Found' });
+  });
   it(`should fetch all seasons of a show as an Observable`, () => {
     showService.getShowSeasonList(1).subscribe((shows: any) => {
       expect(shows.length).toBe(1);
@@ -46,6 +69,17 @@ describe('ShowsService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(showList);
     httpMock.verify();
+  });
+  it('fetch show season by show id throws 404 error', () => {
+    showService.getShowSeasonList(2).subscribe(
+      () => fail('Should have failed with 404 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(404);
+        expect(error.error).toContain('404 error');
+      }
+    );
+    const req = httpMock.expectOne('http://api.tvmaze.com/shows/2/seasons');
+    req.flush('404 error', { status: 404, statusText: 'Not Found' });
   });
   it(`should verify search functionality with valid value and return result as an Observable`,
     () => {
@@ -65,8 +99,20 @@ describe('ShowsService', () => {
       .subscribe((shows: any) => {
         expect(shows).toBe(null);
       });
-    });
   });
+  it('search api throws 404 error', () => {
+    showService.search('xzxz').subscribe(
+      () => fail('Should have failed with 404 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(404);
+        expect(error.error).toContain('404 error');
+      }
+    );
+    const params = { key: 'q', value: 'xzxz' };
+    const req = httpMock.expectOne(`http://api.tvmaze.com/search/shows?${params.key}=${params.value}`);
+    req.flush('404 error', { status: 404, statusText: 'Not Found' });
+  });
+});
 
 const showList = [
   {

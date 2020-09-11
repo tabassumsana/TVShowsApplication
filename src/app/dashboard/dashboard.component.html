@@ -30,10 +30,8 @@
             <div class="show-list">
                 <div class="show-list-div" [routerLink]="['/show-details/', show.id]"
                     *ngFor="let show of dramaShows['list'] | slice:0:visibleShowsCount">
-                    <!-- <div class="show-name-div"><div class="show-name">{{show.name}}</div></div> -->
                     <img src="{{show.image.medium}}" />
                     <div class="slide-details"> 
-                        <!-- <div class="slide-name"> {{show.name}} </div> -->
                         <div class="slide-info"> {{show.language}} | <span class="star-color">&#9733; </span>{{show.rating.average}}<br> {{show.genres.join(' | ')}} </div>
                     </div>
                 </div>
@@ -47,10 +45,8 @@
             <div class="show-list">
                 <div class="show-list-div" [routerLink]="['/show-details/', show.id]"
                     *ngFor="let show of romanceShows['list'] | slice:0:visibleShowsCount">
-                    <!-- <div class="show-name-div"><div class="show-name">{{show.name}}</div></div> -->
                     <img src="{{show.image.medium}}" />
                     <div class="slide-details"> 
-                        <!-- <div class="slide-name"> {{show.name}} </div> -->
                         <div class="slide-info"> {{show.language}} | <span class="star-color">&#9733; </span>{{show.rating.average}}<br> {{show.genres.join(' | ')}} </div>
                     </div>
                 </div>
@@ -65,10 +61,8 @@
             <div class="show-list">
                 <div class="show-list-div" [routerLink]="['/show-details/', show.id]"
                     *ngFor="let show of actionShows['list'] | slice:0:visibleShowsCount">
-                    <!-- <div class="show-name-div"><div class="show-name">{{show.name}}</div></div> -->
                     <img src="{{show.image.medium}}" />
                     <div class="slide-details"> 
-                        <!-- <div class="slide-name"> {{show.name}} </div> -->
                         <div class="slide-info"> {{show.language}} | <span class="star-color">&#9733; </span>{{show.rating.average}}<br> {{show.genres.join(' | ')}} </div>
                     </div>
                 </div>
@@ -83,10 +77,8 @@
             <div class="show-list">
                 <div class="show-list-div" [routerLink]="['/show-details/', show.id]"
                     *ngFor="let show of sciFiShows['list'] | slice:0:visibleShowsCount">
-                    <!-- <div class="show-name-div"><div class="show-name">{{show.name}}</div></div> -->
                     <img src="{{show.image.medium}}" />
                     <div class="slide-details"> 
-                        <!-- <div class="slide-name"> {{show.name}} </div> -->
                         <div class="slide-info"> {{show.language}} | <span class="star-color">&#9733; </span>{{show.rating.average}}<br> {{show.genres.join(' | ')}} </div>
                     </div>
                 </div>
@@ -101,10 +93,8 @@
             <div class="show-list">
                 <div class="show-list-div" [routerLink]="['/show-details/', show.id]"
                     *ngFor="let show of horrorShows['list'] | slice:0:visibleShowsCount">
-                    <!-- <div class="show-name-div"><div class="show-name">{{show.name}}</div></div> -->
                     <img src="{{show.image.medium}}" />
                     <div class="slide-details"> 
-                        <!-- <div class="slide-name"> {{show.name}} </div> -->
                         <div class="slide-info"> {{show.language}} | <span class="star-color">&#9733; </span>{{show.rating.average}}<br> {{show.genres.join(' | ')}} </div>
                     </div>
                 </div>

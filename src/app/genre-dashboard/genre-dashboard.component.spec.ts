@@ -101,8 +101,6 @@ describe('GenreDashboardComponent:', () => {
       };
       expect(component.genreType).toBe('romance');
       expect(component.genreData).toEqual(data);
-      // expect(component.genreData['type']).toBe('Popular In Romance');
-      // expect(component.genreData['list'].length).toBe(0);
     });
   });
   describe('checks action param type:', () => {
