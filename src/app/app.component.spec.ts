@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { Router } from '@angular/router';
 
 describe('AppComponent', () => {
-  let routerSpy = {navigate: jasmine.createSpy('navigate')};
+  const routerSpy = {navigate: jasmine.createSpy('navigate')};
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

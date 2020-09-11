@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, switchMap, distinctUntilChanged } from 'rxjs/internal/operators';
 import { Router } from '@angular/router';
-import { ShowsService } from '../service/shows.service'
+import { ShowsService } from '../service/shows.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +11,13 @@ import { ShowsService } from '../service/shows.service'
 })
 export class HeaderComponent implements OnInit {
 
+  showIconSearch = false;
   myForm: FormGroup;
   results: any[] = [];
 
   constructor(
-    private service: ShowsService, 
-    private router:Router
+    private service: ShowsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,14 +29,14 @@ export class HeaderComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(value => this.service.search(value))
       ).subscribe(users => this.results = users);
-      
+
   }
 
   // Handles header icon click action.
   // Navigates user to Dashboard/Home screen.
   navigateToHome(): void {
     this.router.navigate(['']);
-  } 
+  }
 
   // Navigates user to shows details screen based on selection.
   gotoShowsDetail(id: number): void {
@@ -44,7 +45,7 @@ export class HeaderComponent implements OnInit {
   }
 
   // Track function to handle rendering of data in UI based on id only.
-  showsTrackByMethod(index:number, el:any): number {
+  showsTrackByMethod(index: number, el: any): number {
     return el.show.id;
   }
 }

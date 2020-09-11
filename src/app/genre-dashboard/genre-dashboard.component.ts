@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { ShowsService } from '../service/shows.service';
 
 @Component({
-  selector: 'genre-dashboard',
+  selector: 'app-genre-dashboard',
   templateUrl: './genre-dashboard.component.html',
   styleUrls: ['./genre-dashboard.component.scss']
 })
@@ -15,8 +15,8 @@ export class GenreDashboardComponent implements OnInit {
   genreData = {};
 
   constructor(
-    private actRoute: ActivatedRoute, 
-    private service: ShowsService,  
+    private actRoute: ActivatedRoute,
+    private service: ShowsService,
     public location: Location
   ) { }
 
@@ -27,11 +27,11 @@ export class GenreDashboardComponent implements OnInit {
 
   // Creates data based on Genre type to display in the dashboard UI.
   setGenreData(): void {
-    switch(this.genreType){
-      case 'drama': { 
+    switch (this.genreType){
+      case 'drama': {
         this.genreData = this.service.dramaShows;
         break;
-       };
+       }
       case 'romance': {
         this.genreData = this.service.romanceShows;
         break;

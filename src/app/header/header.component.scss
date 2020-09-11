@@ -70,6 +70,10 @@
         flex-flow: column wrap;
         position: relative;
         width: 35%;
+        // -webkit-transition: all 0.7s ease 0s;
+        // -moz-transition: all 0.7s ease 0s;
+        // -o-transition: all 0.7s ease 0s;
+        // transition: all 0.7s ease 0s;
     }
     .search-container {
         width: 100%;
@@ -116,7 +120,7 @@
     .artist-name {
         display: inline-block;
         position: absolute;
-        padding: 0px 20px;
+        padding: 10px 5px 0 10px;
     }
     .filter-select-list:hover {
         background:  #48681a;
@@ -128,12 +132,37 @@
 
 @media(max-width: 599.99px) {
     .header-container{
+        .search-wrapper{
+            width: 60%;
+            position: unset;
+        }
         .filter-select{
-            width: 127px;
-            left: -20px;
+            left: 0;
+            // height: 50px;
+            // img{
+                // height: 50px;
+                // width: 50%;
+            // }
         }
-        .artist-name {
-            display: none;
+        .filter-select-empty{
+            text-align: center;
         }
+        // .artist-name {
+            // font-size: 9px;
+            // padding: 7px 0 5px 5px;
+            // .result-genre,
+            // .result-language{
+            //     display: none;
+            // }
+            // &> *:last-child,
+            // &:nth-child(2)
+            //  {
+            //     display: none;
+            //   }
+            // display: none;
+        // }
+//         .artist-name:nth-last-of-type(2){
+// color:red;
+//         }
     }
 }

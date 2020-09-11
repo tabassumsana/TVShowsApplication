@@ -1,11 +1,11 @@
 <div *ngIf="isLoaded" class="detail-container-div">
     <div class="back-icon" (click)="goBack()">&larr;</div>
     <div class="detail-container">
-        <img [src]="showDetails['image'].medium" alt=""/>
         <div class="show-name"> {{showDetails['name']}} </div>
+        <img [src]="showDetails['image'].medium" alt=""/>
         <div class="show-summary" [innerHTML]="showDetails['summary']"> </div>
         <div><span>Network:</span> {{showDetails['network'].name}} </div>
-        <div><span>Rating:</span> {{showDetails['rating'].average == null ? 'NA' : showDetails['rating'].average}} </div>
+        <div><span>Rating:</span> {{showDetails['rating'].average || 'NA'}} </div>
         <div><span>Status:</span> {{showDetails['status']}} </div>
         <div><span>Language:</span> {{showDetails['language']}} </div>
         <div><span>Show Type:</span> {{showDetails['type']}} </div>

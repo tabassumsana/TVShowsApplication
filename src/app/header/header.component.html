@@ -2,7 +2,10 @@
     <div class="logo" (click)="navigateToHome()">
         <img src="//static.tvmaze.com/images/tvm-header-logo.png" alt="" width="90" height="30"/>
     </div>
-    <div class="search-wrapper">
+    <!-- <div class="search-icon-bar"  [style.display]=" showIconSearch ? 'none' : 'block'">
+        <i class="material-icons search-icon" (click)="showIconSearch = true;">search</i>
+    </div> -->
+    <div class="search-wrapper" >
         <form  [formGroup]="myForm" >
             <div class="search-container">
                 <input formControlName="searchTerm" required
@@ -17,7 +20,11 @@
                     <li *ngIf="result.show.image != null" class="filter-select-list">
                         <div (click)="gotoShowsDetail(result.show.id)">
                             <img src="{{result.show.image.medium}}" alt="" width="100" height="100">
-                            <p class="artist-name" id=""> {{result.show.name}}</p>
+                            <div class="artist-name"> 
+                                <div> {{result.show.name}}</div>
+                                <div class="result-language"> {{result.show.language}}</div>
+                                <div class="result-genre"> {{result.show.genres.join(' | ')}}</div>
+                            </div>
                         </div> 
                     </li>
                 </ng-container>

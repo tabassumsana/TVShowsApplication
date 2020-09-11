@@ -36,19 +36,19 @@ export class DashboardComponent implements OnInit {
     this.service.getAllShows().subscribe((data: any) => {
       this.showList = data as any[];
       this.topShows = this.showList.filter(obj => {
-        return obj.rating.average > 8
+        return obj.rating.average > 8;
       }).map(obj =>  {
         return {
           id: obj.id,
-          src : obj.image.original,
-          name : obj.name,
-          rating : obj.rating.average,
-          summary : obj.summary,
-          language : obj.language,
-          genres : obj.genres,
-          url : obj.url
+          src: obj.image.original,
+          name: obj.name,
+          rating: obj.rating.average,
+          summary: obj.summary,
+          language: obj.language,
+          genres: obj.genres,
+          url: obj.url
         };
-      });
+      }).sort((a, b) => b.rating > a.rating ? 1 : -1);
       this.createDataBasedOnGenre();
     });
   }
@@ -57,41 +57,41 @@ export class DashboardComponent implements OnInit {
   createDataBasedOnGenre(): void {
     this.dramaShows = {
       type: 'Popular in Drama',
-      list : this.showList.filter(obj => 
-        obj.genres.includes('Drama') || 
-        obj.genres.includes('Family') || 
+      list : this.showList.filter(obj =>
+        obj.genres.includes('Drama') ||
+        obj.genres.includes('Family') ||
         obj.genres.includes('Comedy')
     )};
     this.service.dramaShows = this.dramaShows;
 
     this.romanceShows = {
       type: 'Popular in Romance',
-      list : this.showList.filter(obj => 
+      list : this.showList.filter(obj =>
         obj.genres.includes('Romance')
     )};
     this.service.romanceShows = this.romanceShows;
 
     this.actionShows = {
       type: 'Popular in Action',
-      list : this.showList.filter(obj => 
-        obj.genres.includes('Crime') || 
-        obj.genres.includes('Action') || 
+      list : this.showList.filter(obj =>
+        obj.genres.includes('Crime') ||
+        obj.genres.includes('Action') ||
         obj.genres.includes('Thriller')
     )};
     this.service.actionShows = this.actionShows;
 
     this.sciFiShows = {
       type: 'Popular in Science-Fiction',
-      list : this.showList.filter(obj => 
-        obj.genres.includes('ScienceFiction') || 
-        obj.genres.includes('Adventure') || 
+      list : this.showList.filter(obj =>
+        obj.genres.includes('ScienceFiction') ||
+        obj.genres.includes('Adventure') ||
         obj.genres.includes('Supernatural')
     )};
     this.service.sciFiShows = this.sciFiShows;
 
     this.horrorShows = {
       type: 'Popular in Horror',
-      list : this.showList.filter(obj => 
+      list : this.showList.filter(obj =>
         obj.genres.includes('Horror')
     )};
     this.service.horrorShows = this.horrorShows;

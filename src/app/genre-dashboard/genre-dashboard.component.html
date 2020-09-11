@@ -4,8 +4,12 @@
     <div class="show-list">
         <div class="show-list-div" [routerLink]="['/show-details/', show.id]"
             *ngFor="let show of genreData['list']">
-            <div class="show-name-div"><div class="show-name">{{show.name}}</div></div>
+            <!-- <div class="show-name-div"><div class="show-name">{{show.name}}</div></div> -->
             <img src="{{show.image.medium}}" />
+            <div class="slide-details"> 
+                <!-- <div class="slide-name"> {{show.name}} </div> -->
+                <div class="slide-info"> {{show.language}} | <span class="star-color">&#9733; </span>{{show.rating.average}}<br> {{show.genres.join(' | ')}} </div>
+            </div>
         </div>
     </div>
 </div>

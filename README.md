@@ -1,7 +1,7 @@
 # TvShowsApp
 
-A single‐page web application which allows users to browse Tv. It uses the following open api: http://api.tvmaze.com On the Dashboard. It loads top rated tc shows in carousel section and genre based tv shows in genre section. Clicking on any of the shows from the dashboard, user is navigated to the details page where all required information fo the show is displayed.
-However you can search any show, and you will get details regarding it. When the user selects a show from the search results, the details of that tc show appears on a screen. The search option is avaiable in the header which is common across all screens.
+A single‐page web application which allows users to browse Tv shows based on top rating and genre. It uses the following open api: http://api.tvmaze.com On the Dashboard. It loads top rated tv shows in carousel section and genre based tv shows in genre section. Clicking on any of the shows from the dashboard, user is navigated to the details page where all required information fo the show is displayed.
+However, User can search any show, and will get details regarding it. When the user selects a show from the search results, the details of that tv show appears on a screen. The search option is avaiable in the header which is common across all screens.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
@@ -32,6 +32,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Running linting tool
+
+Run `ng lint` to run the linting tool on angular app code. It checks the code quality of angular project specified. It uses TSLint as default linting tool and uses the default configuration available in tslint.
 
 ## Further help
 

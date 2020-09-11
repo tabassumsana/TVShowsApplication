@@ -1,4 +1,6 @@
 .container {
+    max-width: 1200px;
+    margin: 0 auto;
     .genre-name {
         font-size: 21px;
         color: white;
@@ -24,9 +26,10 @@
         border-radius: 5px;
         .show-list-div {
             margin: 10px;
-            background: #61892f;
+            // background: #61892f;
+            color: #bdbcbc;
             border-radius: 5px;
-            height: 250px;
+            height: 290px;
             cursor: pointer;
             .show-name-div {
                 display: block;
@@ -52,6 +55,9 @@
                 object-fit: fill;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 border-radius: 0 0 5px 5px;
+            }
+            .star-color{
+                color:#FFA000;
             }
         }
         .show-list-div:hover{

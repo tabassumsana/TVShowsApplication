@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -7,11 +7,10 @@ import { GenreDashboardComponent } from './genre-dashboard.component';
 import { ShowsService} from '../service/shows.service';
 
 describe('GenreDashboardComponent:', () => {
-  let component: GenreDashboardComponent;
-  let fixture: ComponentFixture<GenreDashboardComponent>;
-
   describe('checks drama param type:', () => {
-    function setup() {
+    let component: GenreDashboardComponent;
+    let fixture: ComponentFixture<GenreDashboardComponent>;
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [ GenreDashboardComponent ],
         imports: [RouterTestingModule],
@@ -32,35 +31,29 @@ describe('GenreDashboardComponent:', () => {
       .compileComponents();
       fixture = TestBed.createComponent(GenreDashboardComponent);
       component = fixture.componentInstance;
-      const showService = fixture.debugElement.injector.get(ShowsService);
-
-      return { fixture, component, showService };
-    }
+      fixture.detectChanges();
+    }));
 
     it('should create', () => {
-      const { component } = setup();
       expect(component).toBeTruthy();
     });
     it('should verify the headline of the page correctly', () => {
-      const { fixture } = setup();
-      fixture.detectChanges();
       const compiled = fixture.nativeElement;
       expect(compiled.querySelector('.container .genre-name').textContent).toContain('Popular In Drama');
     });
     it('should verify component data correctly', () => {
-      const { component, fixture } = setup();
-      fixture.detectChanges();
+      const data = {
+        type: 'Popular In Drama',
+        list: []
+      };
       expect(component.genreType).toBe('drama');
-      expect(component.genreData['type']).toBe('Popular In Drama');
-      expect(component.genreData['list'].length).toBe(0);
+      expect(component.genreData).toEqual(data);
     });
     it('should have goBack method and should call location.back', () => {
-      const { component, fixture } = setup();
-      fixture.detectChanges();
-      spyOn(component.location, 'back');  
-      let ele = fixture.debugElement.queryAll(By.css('.back-icon'));
+      spyOn(component.location, 'back');
+      const ele = fixture.debugElement.queryAll(By.css('.back-icon'));
       expect(ele.length).toBe(1);
-      let backBtn: HTMLElement = ele[0].nativeElement;
+      const backBtn: HTMLElement = ele[0].nativeElement;
       expect(backBtn).toHaveClass('back-icon');
       backBtn.click();
       expect(component.goBack).toBeDefined();
@@ -68,7 +61,9 @@ describe('GenreDashboardComponent:', () => {
     });
   });
   describe('checks romance param type:', () => {
-    function setup() {
+    let component: GenreDashboardComponent;
+    let fixture: ComponentFixture<GenreDashboardComponent>;
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [ GenreDashboardComponent ],
         imports: [RouterTestingModule],
@@ -87,77 +82,75 @@ describe('GenreDashboardComponent:', () => {
           }]
       })
       .compileComponents();
-      const fixture = TestBed.createComponent(GenreDashboardComponent);
-      const component = fixture.componentInstance;
-      const showService = fixture.debugElement.injector.get(ShowsService);
-
-      return { fixture, component, showService };
-    }
+      fixture = TestBed.createComponent(GenreDashboardComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }));
 
     it('should create', () => {
-      const { component } = setup();
       expect(component).toBeTruthy();
     });
     it('should verify the headline of the page correctly', () => {
-      const { fixture } = setup();
-      fixture.detectChanges();
       const compiled = fixture.nativeElement;
       expect(compiled.querySelector('.container .genre-name').textContent).toContain('Popular In Romance');
     });
     it('should verify component data correctly', () => {
-      const { component, fixture } = setup();
-      fixture.detectChanges();
+      const data = {
+        type: 'Popular In Romance',
+        list: []
+      };
       expect(component.genreType).toBe('romance');
-      expect(component.genreData['type']).toBe('Popular In Romance');
-      expect(component.genreData['list'].length).toBe(0);
+      expect(component.genreData).toEqual(data);
+      // expect(component.genreData['type']).toBe('Popular In Romance');
+      // expect(component.genreData['list'].length).toBe(0);
     });
   });
   describe('checks action param type:', () => {
-    function setup() {
-      TestBed.configureTestingModule({
-        declarations: [ GenreDashboardComponent ],
-        imports: [RouterTestingModule],
-        providers: [
-          {provide: ActivatedRoute, useValue: {
-              snapshot: {
-                  params: {
-                    type: 'action'
-                  }
-            } }
-          },
-          {provide: ShowsService, useValue: {
-              actionShows: {type: 'Popular In Action', list: []}
-            }
-          }]
-      })
-      .compileComponents();
-      const fixture = TestBed.createComponent(GenreDashboardComponent);
-      const component = fixture.componentInstance;
-      const showService = fixture.debugElement.injector.get(ShowsService);
-
-      return { fixture, component, showService };
-    }
+    let component: GenreDashboardComponent;
+    let fixture: ComponentFixture<GenreDashboardComponent>;
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+          declarations: [ GenreDashboardComponent ],
+          imports: [RouterTestingModule],
+          providers: [
+            {provide: ActivatedRoute, useValue: {
+                snapshot: {
+                    params: {
+                      type: 'action'
+                    }
+              } }
+            },
+            {provide: ShowsService, useValue: {
+                actionShows: {type: 'Popular In Action', list: []}
+              }
+            }]
+        })
+        .compileComponents();
+        fixture = TestBed.createComponent(GenreDashboardComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      }));
 
     it('should create', () => {
-      const { component } = setup();
       expect(component).toBeTruthy();
     });
     it('should verify the headline of the page correctly', () => {
-      const { fixture } = setup();
-      fixture.detectChanges();
       const compiled = fixture.nativeElement;
       expect(compiled.querySelector('.container .genre-name').textContent).toContain('Popular In Action');
     });
     it('should verify component data correctly', () => {
-      const { component, fixture } = setup();
-      fixture.detectChanges();
+      const data = {
+        type: 'Popular In Action',
+        list: []
+      };
       expect(component.genreType).toBe('action');
-      expect(component.genreData['type']).toBe('Popular In Action');
-      expect(component.genreData['list'].length).toBe(0);
+      expect(component.genreData).toEqual(data);
     });
   });
   describe('checks sciFi param type:', () => {
-    function setup() {
+    let component: GenreDashboardComponent;
+    let fixture: ComponentFixture<GenreDashboardComponent>;
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [ GenreDashboardComponent ],
         imports: [RouterTestingModule],
@@ -175,33 +168,31 @@ describe('GenreDashboardComponent:', () => {
           }]
       })
       .compileComponents();
-      const fixture = TestBed.createComponent(GenreDashboardComponent);
-      const component = fixture.componentInstance;
-      const showService = fixture.debugElement.injector.get(ShowsService);
-
-      return { fixture, component, showService };
-    }
+      fixture = TestBed.createComponent(GenreDashboardComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }));
 
     it('should create', () => {
-      const { component } = setup();
       expect(component).toBeTruthy();
     });
     it('should verify the headline of the page correctly', () => {
-      const { fixture } = setup();
-      fixture.detectChanges();
       const compiled = fixture.nativeElement;
       expect(compiled.querySelector('.container .genre-name').textContent).toContain('Popular In Science-Fiction');
     });
     it('should verify component data correctly', () => {
-      const { component, fixture } = setup();
-      fixture.detectChanges();
+      const data = {
+        type: 'Popular In Science-Fiction',
+        list: []
+      };
       expect(component.genreType).toBe('sciFi');
-      expect(component.genreData['type']).toBe('Popular In Science-Fiction');
-      expect(component.genreData['list'].length).toBe(0);
+      expect(component.genreData).toEqual(data);
     });
   });
   describe('checks horror param type:', () => {
-    function setup() {
+    let component: GenreDashboardComponent;
+    let fixture: ComponentFixture<GenreDashboardComponent>;
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [ GenreDashboardComponent ],
         imports: [RouterTestingModule],
@@ -219,29 +210,25 @@ describe('GenreDashboardComponent:', () => {
           }]
       })
       .compileComponents();
-      const fixture = TestBed.createComponent(GenreDashboardComponent);
-      const component = fixture.componentInstance;
-      const showService = fixture.debugElement.injector.get(ShowsService);
-
-      return { fixture, component, showService };
-    }
+      fixture = TestBed.createComponent(GenreDashboardComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }));
 
     it('should create', () => {
-      const { component } = setup();
       expect(component).toBeTruthy();
     });
     it('should verify the headline of the page correctly', () => {
-      const { fixture } = setup();
-      fixture.detectChanges();
       const compiled = fixture.nativeElement;
       expect(compiled.querySelector('.container .genre-name').textContent).toContain('Popular In Horror');
     });
     it('should verify component data correctly', () => {
-      const { component, fixture } = setup();
-      fixture.detectChanges();
+      const data = {
+        type: 'Popular In Horror',
+        list: []
+      };
       expect(component.genreType).toBe('horror');
-      expect(component.genreData['type']).toBe('Popular In Horror');
-      expect(component.genreData['list'].length).toBe(0);
+      expect(component.genreData).toEqual(data);
     });
   });
 });

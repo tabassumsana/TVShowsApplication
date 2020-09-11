@@ -17,14 +17,14 @@ export class ShowDetailsComponent implements OnInit {
   showSeasonList = [];
 
   constructor(
-    private actRoute: ActivatedRoute, 
-    private service: ShowsService, 
+    private actRoute: ActivatedRoute,
+    private service: ShowsService,
     public location: Location
   ) { }
 
   ngOnInit(): void {
     this.actRoute.params.subscribe(params => {
-      this.showId = params['id'];
+      this.showId = params.id;
       this.service.getShowById(this.showId).subscribe(data => {
         this.isLoaded = true;
         this.showDetails = data;
